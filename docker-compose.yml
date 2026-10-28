@@ -11,9 +11,6 @@ services:
       # CHOIX : des valeurs par défaut pour tout, pour que `docker compose up`
       # marche sur une machine neuve sans rien configurer (exigence du socle).
       # Pour le vrai forum : un JWT_SECRET et un STAFF_PASSWORD à soi, SEED_DEMO=false.
-      # CHOIX : des valeurs par défaut pour tout, pour que `docker compose up`
-      # marche sur une machine neuve sans rien configurer (exigence du socle).
-      # Pour le vrai forum : un JWT_SECRET et un STAFF_PASSWORD à soi, SEED_DEMO=false.
       JWT_SECRET: ${JWT_SECRET:-dev-secret-change-me-in-production}
       DATABASE_URL: file:/app/db/forum.db
       PORT: "3000"
