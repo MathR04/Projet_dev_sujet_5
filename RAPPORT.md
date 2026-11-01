@@ -36,17 +36,35 @@ La partie véritablement notable qui sort des TPs est celle sur les CV, qui fait
 
 1.  On a implémenté un "interrupteur" que l'équipe actionne pour ouvrir les réservations aux 1A car Léo veut les 2A/3A d'abord, donc bloquer temporairement les 1A semble être la solution la plus simple et flexible car l'équipe peut leur ouvrir les réservations quand elle veut.
 On a considéré à dédier un quota de réservations aux 2A/3A mais c'était sûrement se compliquer la vie pour rien.
-**Preuve** : api/src/bookings/bookings.service.ts:35 
+
+**Preuve** : api/src/bookings/bookings.service.ts:35  
+
 **Commit** : 663abd2
+
 2. Les créneaux font 20 minutes plutôt qu'une autre durée. C'est un point non discuté avec Léo, mais on s'est dit que 20 min correspondrait à peu près à une visio préliminaire pour un entretien, et que la situation y ressemble.
-**Preuve**: api/src/forum.config.ts:28
+
+**Preuve**: api/src/forum.config.ts:28  
+
 **Commit** : df57d34
 
-3. Le catalogue est trié par places libres plutôt que par les plus naturels tris par nom au domaine. Comme le but est de faire remonter les PME, ce tri semblait primordial. **Preuve**: web/src/pages/CatalogPage.tsx:36
+3. Le catalogue est trié par places libres plutôt que par les plus naturels tris par nom au domaine. Comme le but est de faire remonter les PME, ce tri semblait primordial.  
+
+**Preuve**: web/src/pages/CatalogPage.tsx:36  
+
 **Commit** 32f46e0
 
-4. On a fixé 5 RDV au plus par élève au lieu mettre aucune limite (autre que un RDV par entreprise) pour éviter de recréer la queue. **Preuve**: api/src/forum.config.ts:32
+4. On a fixé 5 RDV au plus par élève au lieu mettre aucune limite (autre que un RDV par entreprise) pour éviter de recréer la queue.  
+
+**Preuve**: api/src/forum.config.ts:32  
+
 **Commit** df57d34
 
-5. La contrainte de l'unique couple (élève, entreprise) est gérée par la base, plutôt que par une vérification seulement dans le code pour nous éviter d'éventuels problèmes si deux clics arrivent simultanément: ce sera la base qui tranchera. **Preuve** : api/prisma/schema.prisma:129
+5. La contrainte de l'unique couple (élève, entreprise) est gérée par la base, plutôt que par une vérification seulement dans le code pour nous éviter d'éventuels problèmes si deux clics arrivent simultanément: ce sera la base qui tranchera.  
+
+**Preuve** : api/prisma/schema.prisma:129  
+
 **Commit**: 62f58cc
+
+## L'IA écartée
+
+L'agent IA nous a suggéré que les élèvent pourraient "donner l'URL de leur CV (champ texte validé par @isUrl, comme website), mais un lien reste lisible par n'importe qui qui l'obtient." Comme Léo souhaite que les CV soient visibles que par les recruteurs concernés, on a préféré l'envoi des CV par pdf.
